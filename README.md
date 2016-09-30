@@ -1,6 +1,8 @@
 MongoDB
 =========
 
+[![Build Status](https://travis-ci.org/jebovic/ansible-mongodb.svg?branch=master)](https://travis-ci.org/jebovic/ansible-mongodb)
+
 Install and configure MongoDB
 
 Role Variables
