@@ -1,7 +1,7 @@
 MongoDB
 =========
 
-[![Build Status](https://travis-ci.org/jebovic/ansible-mongodb.svg?branch=master)](https://travis-ci.org/jebovic/ansible-mongodb)
+[![Build Status](https://travis-ci.org/jebovic/ansible-mongodb.svg?branch=master)](https://travis-ci.org/jebovic/ansible-mongodb) [![Ansible Galaxy](https://img.shields.io/badge/galaxy-jebovic.mongodb-blue.svg?style=flat)](https://galaxy.ansible.com/jebovic/mongodb)
 
 Install and configure MongoDB
 
