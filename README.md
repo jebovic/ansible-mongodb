@@ -9,7 +9,7 @@ Role Variables
 --------------
 
 ```
-# MongoDB basic ocnfiguration
+# MongoDB basic configuration
 mongodb_dbpath: /var/lib/mongodb
 mongodb_log_file: /var/log/mongodb/mongodb.log
 mongodb_bind_ip: 127.0.0.1
@@ -24,7 +24,7 @@ Example Playbook
 ```
     - hosts: servers
       roles:
-         - { role: mongodb }
+         - { role: jebovic.mongodb }
 ```
 
 License
