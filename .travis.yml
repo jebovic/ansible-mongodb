@@ -35,9 +35,9 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
   # test role tasks
-  - docker exec --tty "$(cat ${container_id})" env TERM=xterm systemctl --no-pager status mongodb
-  - docker exec --tty "$(cat ${container_id})" env TERM=xterm systemctl --no-pager stop mongodb
-  - docker exec --tty "$(cat ${container_id})" env TERM=xterm systemctl --no-pager start mongodb
+  - docker exec --tty "$(cat ${container_id})" env TERM=xterm service mongodb status
+  - docker exec --tty "$(cat ${container_id})" env TERM=xterm service mongodb stop
+  - docker exec --tty "$(cat ${container_id})" env TERM=xterm service mongodb start
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
