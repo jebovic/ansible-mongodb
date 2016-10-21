@@ -1,5 +1,17 @@
 ---
 
+- name: install key
+  apt_key:
+    url: "{{ mongodb_apt_key_url }}"
+    state: present
+
+- name: add repos
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ mongodb_apt_repositories }}"
+
 - name: install packages
   apt:
     name:  "{{ item }}"
@@ -7,9 +19,7 @@
     install_recommends: false
     update_cache:       yes
     cache_valid_time:   300
-  with_items:
-    - mongodb
-    - python-pymongo
+  with_items: "{{ mongodb_packages }}"
 
 - name: config
   template:
@@ -18,7 +28,7 @@
     owner: root
     group: root
   with_items:
-    - mongodb.conf
+    - mongod.conf
   notify:
     - restart mongodb
 
@@ -28,4 +38,4 @@
     state: started
     enabled: yes
   with_items:
-    - mongodb
+    - "{{ mongodb_daemon }}"
