@@ -31,6 +31,7 @@
     - mongod.conf
   notify:
     - restart mongodb
+  tags: mongodb_config
 
 - name: service start
   service:
