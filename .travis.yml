@@ -24,6 +24,8 @@ script:
   - docker run --detach --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} jebovic/${distro}-ansible:latest "${init}" > "${container_id}"
   # syntax checking
   - docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/${playbook} --syntax-check
+  # Fix unrecognized service name for mongod
+  - if [ "${distro}" == 'ubuntutrusty' ]; docker exec "$(cat ${container_id})" sh -c "rm -rf /sbin/initctl && ln -s /sbin/initctl.distrib /sbin/initctl" ; fi
   # test role
   - docker exec "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/${playbook}
   # test role idempotence
