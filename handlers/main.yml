@@ -2,5 +2,5 @@
 
 - name: restart mongodb
   service:
-    name:  "{{ mongodb_daemon }}"
+    name: "{{ mongodb_daemon }}"
     state: restarted
